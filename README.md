@@ -2,7 +2,7 @@
 
 ### Goal
 
-This repo is a fork of [React](https://facebook.github.io/react/). It's [prod-src](./prod-src) folder has a codebase almost the same as react [src](./src) but without the code that only run on development environment. It's goal is to help people learn how it works without the need of understanding a lot of debug instruments.
+This repo is a fork of [React](https://facebook.github.io/react/). [prod-src](./prod-src) folder in the repo has a codebase almost the same as react [src](https://github.com/facebook/react/tree/master/src) but without the code that only run on development environment. It's goal is to help people learn how it works without the need of understanding a lot of debug instruments.
 
 ### How
 
@@ -10,8 +10,8 @@ It uses babel to execute [Dead Code Elimination](https://en.wikipedia.org/wiki/D
 
 ### Compare
 
-- [114 __DEV__ code results](https://github.com/facebook/react/search?utf8=%E2%9C%93&q=__DEV__&type=) in facebook/react
-- [0 __DEV__ code results](https://github.com/chentsulin/react-without-__DEV__/search?utf8=%E2%9C%93&q=__DEV__&type=) in here
+- [114 __DEV__ code results](https://github.com/facebook/react/search?utf8=%E2%9C%93&q=__DEV__&type=) in react/src
+- 0 __DEV__ code results in [prod-src](./prod-src)
 
 
 ### License
