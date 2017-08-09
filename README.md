@@ -8,6 +8,12 @@ This repo is a fork of [React](https://facebook.github.io/react/). It's [prod-sr
 
 It uses babel to execute [Dead Code Elimination](https://en.wikipedia.org/wiki/Dead_code_elimination) with `__DEV__=false`.
 
+### Compare
+
+- [114 __DEV__ code results](https://github.com/facebook/react/search?utf8=%E2%9C%93&q=__DEV__&type=) in facebook/react
+- [0 __DEV__ code results](https://github.com/chentsulin/react-without-__DEV__/search?utf8=%E2%9C%93&q=__DEV__&type=) in here
+
+
 ### License
 
 React is [BSD licensed](./LICENSE). We also provide an additional [patent grant](./PATENTS).
