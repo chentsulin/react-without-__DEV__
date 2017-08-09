@@ -1,0 +1,69 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ReactFiberDevToolsHook
+ * @flow
+ */
+
+'use strict';
+
+import type { Fiber } from 'ReactFiber';
+import type { FiberRoot } from 'ReactFiberRoot';
+
+declare var __REACT_DEVTOOLS_GLOBAL_HOOK__: Object | void;
+
+var warning;
+
+
+let onCommitFiberRoot = null;
+let onCommitFiberUnmount = null;
+let hasLoggedError = false;
+
+function catchErrors(fn) {
+  return function (arg) {
+    try {
+      return fn(arg);
+    } catch (err) {}
+  };
+}
+
+function injectInternals(internals: Object): boolean {
+  if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
+    // No DevTools
+    return false;
+  }
+  const hook = __REACT_DEVTOOLS_GLOBAL_HOOK__;
+  if (!hook.supportsFiber) {
+    // DevTools exists, even though it doesn't support Fiber.
+    return true;
+  }
+  try {
+    const rendererID = hook.inject(internals);
+    // We have successfully injected, so now it is safe to set up hooks.
+    onCommitFiberRoot = catchErrors(root => hook.onCommitFiberRoot(rendererID, root));
+    onCommitFiberUnmount = catchErrors(fiber => hook.onCommitFiberUnmount(rendererID, fiber));
+  } catch (err) {}
+  // DevTools exists
+  return true;
+}
+
+function onCommitRoot(root: FiberRoot) {
+  if (typeof onCommitFiberRoot === 'function') {
+    onCommitFiberRoot(root);
+  }
+}
+
+function onCommitUnmount(fiber: Fiber) {
+  if (typeof onCommitFiberUnmount === 'function') {
+    onCommitFiberUnmount(fiber);
+  }
+}
+
+exports.injectInternals = injectInternals;
+exports.onCommitRoot = onCommitRoot;
+exports.onCommitUnmount = onCommitUnmount;
