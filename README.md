@@ -2,7 +2,7 @@
 
 ### Goal
 
-This repo is a fork of [React](https://facebook.github.io/react/). It's [prod-src](./prod-src) folder has a codebase almost the same as react [src](./src) but without the code that only run on development environment. It's goal is to help people learn how it works without understand a lot of debug instruments.
+This repo is a fork of [React](https://facebook.github.io/react/). It's [prod-src](./prod-src) folder has a codebase almost the same as react [src](./src) but without the code that only run on development environment. It's goal is to help people learn how it works without the need of understanding a lot of debug instruments.
 
 ### How
 
